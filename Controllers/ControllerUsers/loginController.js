@@ -24,11 +24,11 @@ const login = async (req, res) => {
 
     
     const token = jwt.sign({ userId: user.id, email: user.email }, SECRET_KEY, {
-      expiresIn: '8h', // Expiração do token (1 hora)
+      expiresIn: '8h', 
     });
 
  
-    res.json({ token });
+    res.json({ token, userId: user.id  });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
